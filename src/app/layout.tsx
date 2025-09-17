@@ -32,7 +32,7 @@ export default function RootLayout({
 
               <Suspense fallback={null}>
 
-                <main className="p-6">{children}</main>
+                <main className="bg-white">{children}</main>
 
               </Suspense>
             </WorkflowRunnerProvider>

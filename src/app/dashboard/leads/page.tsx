@@ -80,7 +80,7 @@ export default function LeadsPage() {
   })
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-[eef9ff]">
       <div>
         <h1 className="text-3xl font-bold text-balance">Leads</h1>
       </div>
@@ -190,7 +190,7 @@ export default function LeadsPage() {
       </div>
 
       {/* Leads Table */}
-      <Card>
+      <Card className="bg-[#eef9ff]">
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">

@@ -5,16 +5,20 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   LayoutDashboard,
-  Target,
-  Users,
-  BarChart3,
-  Workflow,
   MessageSquare,
-  Settings,
-  ChevronLeft,
-  ChevronRight,
+  Linkedin,
+  Users,
+  Network,
+  Target,
+  Inbox as Unbox,
   Database,
-  Construction
+  Search,
+  TrendingUp,
+  Settings,
+  Construction,
+  ToolCaseIcon,
+  ChevronLeft,
+  User,
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -22,13 +26,13 @@ import { useState } from "react"
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Campaigns", href: "/dashboard/campaigns", icon: Target },
-  { name: "Leads", href: "/dashboard/leads", icon: Database },
-  { name: "Accounts", href: "/dashboard/linkedin-accounts", icon: Users },
-  { name: "Analytics", href: "/dashboard/analytics", icon: BarChart3 },
-  { name: "Workflows", href: "/dashboard/workflows", icon: Workflow },
+  { name: "LinkedIn", href: "/dashboard/linkedin-accounts", icon: Linkedin },
+  { name: "Accounts", href: "/dashboard/accounts", icon: User },
+  { name: "Leads", href: "/dashboard/leads", icon: Users },
+  { name: "Analytics", href: "/dashboard/analytics", icon: Network },
   { name: "Logs", href: "/dashboard/workflowLogs", icon: Construction },
-  { name: "Templates", href: "/dashboard/templates", icon: MessageSquare },
+  { name: "Campaigns", href: "/dashboard/campaigns", icon: Target },
+  { name: "Workflows", href: "/dashboard/workflows", icon:  ToolCaseIcon},
   { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ]
 
@@ -39,40 +43,41 @@ export function DashboardSidebar() {
   return (
     <div
       className={cn(
-        "fixed left-0 top-0 z-40 h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300",
+        "fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] bg-[#eef9ff] border-r border-gray-200 transition-all duration-300",
         collapsed ? "w-16" : "w-64",
       )}
     >
       <div className="flex h-full flex-col">
-        <div className="flex h-16 items-center justify-between px-4 border-b border-sidebar-border">
-          {!collapsed && <h2 className="text-lg font-semibold text-sidebar-foreground">GTM LinkedIn</h2>}
+        <div className="flex h-12 items-center justify-end px-4 border-b border-gray-200">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setCollapsed(!collapsed)}
-            className="text-sidebar-foreground hover:bg-sidebar-accent"
+            className="text-gray-600 hover:bg-gray-100"
           >
-            {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+            <ChevronLeft className="h-4 w-4" />
           </Button>
         </div>
+        <p className="h-[1px] w-full bg-gray-300 "></p>
 
         <ScrollArea className="flex-1 px-3 py-4">
-          <nav className="space-y-2">
+          <nav className="space-y-1">
             {navigation.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(item.href + "/")
               return (
                 <Button
                   key={item.name}
                   asChild
-                  variant={isActive ? "secondary" : "ghost"}
+                  variant="ghost"
                   className={cn(
-                    "w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent",
+                    "w-full justify-start text-gray-700 hover:bg-gray-100 h-10",
                     collapsed && "px-2",
+                    isActive && "bg-blue-100 text-blue-600 hover:bg-blue-100",
                   )}
                 >
                   <Link href={item.href}>
-                    <item.icon className="h-4 w-4" />
-                    {!collapsed && <span className="ml-3">{item.name}</span>}
+                    <item.icon className={cn("h-4 w-4", isActive && "text-blue-600")} />
+                    {!collapsed && <span className="ml-3 text-sm">{item.name}</span>}
                   </Link>
                 </Button>
               )

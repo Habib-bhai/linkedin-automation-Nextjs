@@ -92,7 +92,7 @@ export function LinkedInAccountsList() {
   return (
     <div className="space-y-4">
       {accounts.map((account) => (
-        <Card key={account.id}>
+        <Card key={account.id} className="bg-[#eef9ff]">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">

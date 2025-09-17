@@ -11,7 +11,8 @@ import {
   campaignFilters,
   nodeExecutions,
   campaignLogs,
-  executorActions
+  executorActions,
+  campaignQueues
 } from './schema';
 
 export const usersRelations = relations(users, ({ many }) => ({
@@ -70,4 +71,12 @@ export const nodeExecutionsRelations = relations(nodeExecutions, ({ one }) => ({
 
 export const campaignLogsRelations = relations(campaignLogs, ({ one }) => ({
   campaignRun: one(campaignRuns, { fields: [campaignLogs.campaignRunId], references: [campaignRuns.id] }),
+}));
+
+
+export const campaignQueuesRelations = relations(campaignQueues, ({ one }) => ({
+  campaign: one(campaigns, {
+    fields: [campaignQueues.campaignId],
+    references: [campaigns.id],
+  }),
 }));

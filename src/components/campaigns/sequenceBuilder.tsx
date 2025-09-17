@@ -273,7 +273,7 @@ function SequenceBuilderContent() {
         <Button onClick={handleAddActionClick}>Add Action</Button>
 
         {/* Clear run logs selector + button */}
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <select
             value={selectedRunId}
             onChange={(e) => setSelectedRunId(e.target.value)}
@@ -302,7 +302,7 @@ function SequenceBuilderContent() {
           >
             Clear Run Logs
           </Button>
-        </div>
+        </div> */}
 
         <Button variant="ghost" onClick={() => stopWorkflow()} disabled={runnerStatus !== "running"}>
           Stop

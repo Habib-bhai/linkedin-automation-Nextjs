@@ -76,7 +76,7 @@ export function CampaignsList({ searchQuery = "", statusFilter = "all", senderFi
 
   return (
     <div className="space-y-4">
-      <Card>
+      <Card className="bg-[#eef9ff]">
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">

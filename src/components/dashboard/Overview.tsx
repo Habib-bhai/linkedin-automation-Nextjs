@@ -48,7 +48,7 @@ export function DashboardOverview() {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-[#eef9ff] border-2 border-gray-200 p-6 rounded-4xl">
       <div className="grid gap-4 md:grid-cols-3">
         <div className="space-y-2">
           <label className="text-sm font-medium text-muted-foreground">Select senders:</label>

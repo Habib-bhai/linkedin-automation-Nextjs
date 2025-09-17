@@ -109,7 +109,7 @@ export function AnalyticsDashboard() {
       {/* Overall Stats */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {overallStats.map((stat) => (
-          <Card key={stat.title}>
+          <Card key={stat.title} className="bg-[#eef9ff]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
               <stat.icon className={`h-4 w-4 ${stat.color}`} />
@@ -126,7 +126,7 @@ export function AnalyticsDashboard() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Campaign Performance */}
-        <Card>
+        <Card className="bg-[#eef9ff]">
           <CardHeader>
             <CardTitle>Campaign Performance</CardTitle>
             <CardDescription>Connection and reply rates by campaign</CardDescription>
@@ -159,7 +159,7 @@ export function AnalyticsDashboard() {
         </Card>
 
         {/* Weekly Trends */}
-        <Card>
+        <Card className="bg-[#eef9ff]">
           <CardHeader>
             <CardTitle>Weekly Activity</CardTitle>
             <CardDescription>Connections, messages, and replies over time</CardDescription>

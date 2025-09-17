@@ -61,6 +61,7 @@ export const campaigns = pgTable('campaigns', {
   status: varchar('status', { length: 50 }).default('draft').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
+  errorStrategy: varchar('error_strategy', { length: 50 })
 });
 
 // Workflow Definitions table
@@ -166,4 +167,14 @@ export const executorActions = pgTable('executor_actions', {
   configSchema: jsonb('config_schema'),
   createdAt: timestamp('created_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'date' }).defaultNow().notNull(),
+});
+
+export const campaignQueues = pgTable('campaign_queues', {
+  id: serial('id').primaryKey(),
+  campaignId: integer('campaign_id').notNull().references(() => campaigns.id, { onDelete: 'cascade' }),
+  queueName: text('queue_name').notNull().unique(),
+  workerCount: integer('worker_count').notNull().default(1),
+  status: text('status').notNull().default('active'), // 'active', 'paused', 'drained'
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });

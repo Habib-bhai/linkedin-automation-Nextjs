@@ -57,6 +57,7 @@ export function CampaignCreationWizard() {
     sequence: null as any,
   })
 
+
   // local state for selecting a run to clear logs for (used in Review & Launch)
   const [selectedRunIdForClear, setSelectedRunIdForClear] = useState<string | "">("")
 
@@ -433,7 +434,7 @@ export function CampaignCreationWizard() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6">
+    <div className="max-w-6xl mx-auto space-y-6 ">
       {/* Steps Header */}
       <div className="flex items-center justify-center space-x-8 py-6">
         {steps.map((step, index) => (
@@ -468,7 +469,7 @@ export function CampaignCreationWizard() {
       </div>
 
       {/* Step Content */}
-      <Card>
+      <Card className="bg-[#eef9ff]">
         <CardContent className="p-8">{renderStepContent()}</CardContent>
       </Card>
 
